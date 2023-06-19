@@ -4,8 +4,8 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
-    defaultConfig {
+	compileSdk 33
+	defaultConfig {
         testInstrumentationRunnerArguments
         applicationId "de.thro.inf.prg3.a07"
         minSdkVersion 26
