@@ -78,22 +78,12 @@ public class MainActivity extends AppCompatActivity {
 
 		setupRetrofit();
 
-		lv.setAdapter(new ArrayAdapter<>(
-			MainActivity.this,     // context we're in; typically the activity
-			R.layout.meal_entry,   // where to find the layout for each item
-			new String[] {"Hello", "world", "test", "test", "testtts", "tralalalaa"} // your data
-		));
+		doAPICallAsync(vegetarianCB.isChecked());
 
 		refreshBtn.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				if(vegetarianCB.isChecked()){
-					doAPICallAsync(true);
-					logger.info("refreshed with checked vegCB");
-				}
-				else{
-					doAPICallAsync(false);
-				}
+				doAPICallAsync(vegetarianCB.isChecked());
 			}
 		});
     }
