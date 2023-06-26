@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
 	private OpenMensaAPI openMensaAPI;
 	private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
+	ListView lv;
+
 	private void setupRetrofit() {
 		// use this to intercept all requests and output them to the logging facilities
 		HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
@@ -72,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         // add your code here
 		CheckBox vegetarianCB = (CheckBox) findViewById(R.id.vegetarianCB);
 		Button refreshBtn = (Button) findViewById(R.id.refreshBtn);
-		ListView lv = (ListView) findViewById(R.id.listView);
+		lv = (ListView) findViewById(R.id.listView);
 
 		setupRetrofit();
 
@@ -86,22 +88,16 @@ public class MainActivity extends AppCompatActivity {
 			@Override
 			public void onClick(View view) {
 				if(vegetarianCB.isChecked()){
-					lv.setAdapter(new ArrayAdapter<>(
-						MainActivity.this,     // context we're in; typically the activity
-						R.layout.meal_entry,   // where to find the layout for each item
-						new String[] {"Ein vegetarischer Eintrag"} // your data
-					));
+					doAPICallAsync(true);
 					logger.info("refreshed with checked vegCB");
 				}
 				else{
-
-					doAPICallAsync();
-
+					doAPICallAsync(false);
 				}
 			}
 		});
     }
-	private void doAPICallAsync(){
+	private void doAPICallAsync(boolean onlyVeg){
 		Call<List<Meal>> callAsync = openMensaAPI.getMeals(dateFormat.format(getCurrentDate()));
 		callAsync.enqueue(new Callback<List<Meal>>() {
 			@Override
@@ -109,11 +105,21 @@ public class MainActivity extends AppCompatActivity {
 				if (response.isSuccessful())
 				{
 					List<Meal> meals = response.body();
-					List<String> mealsStr = new ArrayList<>();
+					List<String> mealsStr = new ArrayList<>(0);
 
-					for(Meal m : meals){
-						mealsStr.add(m.getName());
-						logger.info("added to String List: " + m.getName());
+					if(onlyVeg){
+						for(Meal m : meals){
+							if (m.isVegetarian()){
+								mealsStr.add(m.getName());
+								logger.info("added to String List: " + m.getName());
+							}
+						}
+					}
+					else{
+						for(Meal m : meals){
+							mealsStr.add(m.getName());
+							logger.info("added to String List: " + m.getName());
+						}
 					}
 					lv.setAdapter(new ArrayAdapter<>(
 						MainActivity.this,     // context we're in; typically the activity
