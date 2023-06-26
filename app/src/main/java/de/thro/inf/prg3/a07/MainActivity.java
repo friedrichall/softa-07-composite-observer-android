@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -36,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 	private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
 	ListView lv;
+	Gson gson;
 
 	private void setupRetrofit() {
 		// use this to intercept all requests and output them to the logging facilities
