@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">07-composite-observer</string>
+    <string name="app_name">Mensa Food</string>
     <string name="refreshBtn">Refresh</string>
 	<string name="vegetarianCB">Vegetarian only</string>
 </resources>
