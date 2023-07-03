@@ -1,8 +1,11 @@
 package de.thro.inf.prg3.a07.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import java.util.Dictionary;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,9 +14,15 @@ import java.util.List;
  */
 
 public class Meal {
+	@SerializedName("id")
     private int id;
+	@SerializedName("name")
     private String name;
+	@SerializedName("category")
     private String category;
+	//@SerializedName("prices")
+	//private List<Object> prices;
+	@SerializedName("notes")
     private List<String> notes;
 
     public Meal() {
@@ -44,7 +53,13 @@ public class Meal {
         this.category = category;
     }
 
-    public List<String> getNotes() {
+	/*public List<Object> getPrices() { return prices; }
+
+	public void setPrices(List<Object> prices) {
+		this.prices = prices;
+	}*/
+
+	public List<String> getNotes() {
         return notes;
     }
 

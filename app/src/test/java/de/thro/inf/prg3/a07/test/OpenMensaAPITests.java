@@ -68,7 +68,7 @@ public class OpenMensaAPITests {
     @Test
     public void testGetMeals() throws IOException {
         // TODO prepare call
-		Call<List<Meal>> call = openMensaAPI.getMeals(dateFormat.format(getCurrentDate()));
+		Call<List<Meal>> call = openMensaAPI.getMeals(269, dateFormat.format(getCurrentDate()));
         // TODO execute the call synchronously
 		Response<List<Meal>> resp = call.execute();
         // TODO unwrap the body

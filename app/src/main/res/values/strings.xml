@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Mensa Food</string>
-    <string name="refreshBtn">Refresh</string>
-	<string name="vegetarianCB">Vegetarian only</string>
+    <string name="refreshBtn">Get Foood</string>
+	<string name="vegetarianCB">Veggie Only</string>
+	<string name="textView_mensa">Mensa:</string>
+
+	<string-array name="canteens">
+		<item>Hohfederstraße</item>
+		<item>Kesslerplatz</item>
+	</string-array>
 </resources>

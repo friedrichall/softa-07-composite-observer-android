@@ -7,8 +7,35 @@
 	tools:context="de.thro.inf.prg3.a07.MainActivity">
 
 
+	<androidx.appcompat.widget.SwitchCompat
+		android:id="@+id/vegetarianSwitch"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="16dp"
+		android:paddingVertical="16dp"
+		android:text="@string/vegetarianCB"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/spinner_canteens"
+		tools:ignore="MissingConstraints" />
+
+	<Spinner
+		android:id="@+id/spinner_canteens"
+		android:layout_width="0dp"
+		android:layout_height="48dp"
+		android:layout_marginStart="16dp"
+		android:layout_marginTop="16dp"
+		android:layout_marginEnd="16dp"
+		android:spinnerMode="dropdown"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		tools:listitem="@layout/canteen_spinner_item" />
+
 	<ListView
-		android:id="@+id/listView"
+		android:id="@+id/listView_meals"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginStart="16dp"
@@ -16,48 +43,9 @@
 		android:layout_marginEnd="16dp"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/refreshBtn"
+		app:layout_constraintTop_toBottomOf="@+id/vegetarianSwitch"
 		app:layout_constraintVertical_bias="0.0" />
-
-	<Button
-		android:id="@+id/refreshBtn"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="16dp"
-		android:layout_marginTop="16dp"
-		android:paddingVertical="16dp"
-		android:text="@string/refreshBtn"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="parent"
-		tools:ignore="MissingConstraints" />
-
-	<CheckBox
-		android:id="@+id/vegetarianCB"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginStart="16dp"
-		android:layout_marginTop="16dp"
-		android:paddingVertical="16dp"
-		android:text="@string/vegetarianCB"
-		app:layout_constraintBottom_toTopOf="@id/listView"
-		app:layout_constraintStart_toEndOf="@id/refreshBtn"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintVertical_bias="0.0"
-		tools:ignore="MissingConstraints" />
-
-	<Button
-		android:id="@+id/switchBtn"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="16dp"
-		android:layout_marginEnd="16dp"
-		android:layout_marginBottom="19dp"
-		android:text="Switch"
-		app:layout_constraintBottom_toTopOf="@+id/listView"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintHorizontal_bias="1.0"
-		app:layout_constraintStart_toEndOf="@+id/vegetarianCB"
-		app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
