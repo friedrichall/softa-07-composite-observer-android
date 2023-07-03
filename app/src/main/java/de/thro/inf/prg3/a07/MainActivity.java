@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
 	private OpenMensaAPI openMensaAPI;
 	private static final DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
+	private int canteenId = 269;
+
 	ListView lv;
 	Gson gson;
 
@@ -77,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
         // add your code here
 		CheckBox vegetarianCB = (CheckBox) findViewById(R.id.vegetarianCB);
 		Button refreshBtn = (Button) findViewById(R.id.refreshBtn);
+		Button switchBtn = (Button) findViewById(R.id.switchBtn);
 		lv = (ListView) findViewById(R.id.listView);
 
 		setupRetrofit();
@@ -89,9 +92,18 @@ public class MainActivity extends AppCompatActivity {
 				doAPICallAsync(vegetarianCB.isChecked());
 			}
 		});
+		switchBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(canteenId == 268) canteenId = 269;
+				else if(canteenId == 269) canteenId = 268;
+
+				doAPICallAsync(vegetarianCB.isChecked());
+			}
+		});
     }
 	private void doAPICallAsync(boolean onlyVeg){
-		Call<List<Meal>> callAsync = openMensaAPI.getMeals(dateFormat.format(getCurrentDate()));
+		Call<List<Meal>> callAsync = openMensaAPI.getMeals(canteenId, dateFormat.format(getCurrentDate()));
 		callAsync.enqueue(new Callback<List<Meal>>() {
 			@Override
 			public void onResponse(Call<List<Meal>> call, Response<List<Meal>> response) {

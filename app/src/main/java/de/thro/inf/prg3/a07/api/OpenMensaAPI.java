@@ -14,6 +14,6 @@ import retrofit2.http.Path;
 public interface OpenMensaAPI {
     // TODO add method to get meals of a day
     // example request: GET /canteens/229/days/2017-11-22/meals
-	@GET("/api/v2/canteens/268/days/{date}/meals")
-	Call<List<Meal>> getMeals(@Path("date") String date);
+	@GET("/api/v2/canteens/{canteenId}/days/{date}/meals")
+	Call<List<Meal>> getMeals(@Path("canteenId") int canteenId, @Path("date") String date);
 }
